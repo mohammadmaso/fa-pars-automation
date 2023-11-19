@@ -24,7 +24,7 @@ EXPOSE 8000
 # Run migrations and collect static files
 RUN python manage.py makemigrations
 RUN python manage.py migrate
-RUN python manage.py collectstatic 
+RUN python manage.py collectstatic --noinput
 
 # Create a superuser
 RUN echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('admin', 'mohammadmasoudie@gmail.com', 'The.miiim48836083')" | python manage.py shell
