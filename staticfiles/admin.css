@@ -1,0 +1,40 @@
+@font-face {
+    font-family: 'Alibaba';
+    src: url('./fonts/alibaba-regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Alibaba';
+    src: url('./fonts/alibaba-bold.woff2') format('woff2');
+    font-weight: normal;
+    font-style: bold;
+}
+
+@font-face {
+    font-family: 'Alibaba';
+    src: url('./fonts/alibaba-black.woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+}
+
+
+body,
+.fieldsets,
+.module,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+label {
+    font-family: "Alibaba", sans-serif;
+}
+
+/* For RTL layout */
+body[dir="rtl"] {
+    direction: rtl;
+}

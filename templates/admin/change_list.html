@@ -1,0 +1,12 @@
+{% extends 'admin/change_list.html' %}
+{% load static %}
+{% block object-tools %}
+<div>
+  <form method="post" action="{% url 'update_call' %}">
+    {% csrf_token %}
+    <button class="button" type="submit">بروزرسانی تماس‌ها</button>
+  </form>
+</div>
+<br />
+{{ block.super }}
+{% endblock %}

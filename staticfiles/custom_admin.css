@@ -1,0 +1,64 @@
+@font-face {
+    font-family: 'Alibaba';
+    src: url('./fonts/alibaba-regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Alibaba';
+    src: url('./fonts/alibaba-bold.woff2') format('woff2');
+    font-weight: normal;
+    font-style: bold;
+}
+
+@font-face {
+    font-family: 'Alibaba';
+    src: url('./fonts/alibaba-black.woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+}
+#header .module h2,
+.module caption,
+.inline-group h2 {
+    background-color: #003b86 !important ;
+    border-radius: 5px;
+}
+
+:root{
+    --header-bg: #003b86 !important;
+    --font-family-primary: "Alibaba" !important
+}
+
+.sticky .main.shifted>#nav-sidebar {
+    margin-right: 6px !important;
+    margin-left: 6px !important;
+    padding-left: 6px !important;
+}
+#header .module h2,
+
+*, body,
+.fieldsets,
+.module,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+label 
+button{
+    font-family: "Alibaba", sans-serif;
+}
+
+/* For RTL layout */
+body[dir="rtl"] {
+    direction: rtl;
+}
+
+.sticky .main.shifted>#nav-sidebar {
+    margin-right: 6px !important;
+    margin-left: 6px !important;
+    padding-left: 6px !important;
+}
