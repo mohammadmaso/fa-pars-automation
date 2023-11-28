@@ -33,12 +33,12 @@ class Customer(models.Model):
         null=True, max_length=20, verbose_name="شماره تلفن پشتیبان"
     )
     address = models.TextField(verbose_name="آدرس")
-    region_number = models.IntegerField(default=-1, verbose_name="شماره منطقه")
+    region_number = models.IntegerField(default=-1, verbose_name=" منطقه")
     first_name = models.CharField(max_length=100, verbose_name="نام")
     last_name = models.CharField(max_length=100, verbose_name="نام خانوادگی")
     details = models.TextField(null=True, blank=True, verbose_name="جزئیات")
     attitude = models.TextField(blank=True, null=True, verbose_name="ویژگی‌های شخصیتی")
-    ref = models.CharField(default=-1, max_length=10, verbose_name="معرف")
+    reff = models.CharField(default=-1, max_length=10, verbose_name="معرف")
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
