@@ -18,11 +18,12 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 from dashboard.views import update_call
+from dashboard.admin import MyAdminSite
 
 
 urlpatterns = [
     path("update_call/", update_call, name="update_call"),
-    path("admin/", admin.site.urls),
+    path("admin/", MyAdminSite.site.urls),
     # path("admin_tools_stats/", include("admin_tools_stats.urls")),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
