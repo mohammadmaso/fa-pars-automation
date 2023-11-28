@@ -21,6 +21,7 @@ django-multiselectfield==0.1.12
 django-nvd3==0.9.7
 django-qsstats-magic==1.1.0
 djcacheutils==3.0.0
+environ==1.0
 executing==1.2.0
 ipykernel==6.25.1
 ipython==8.14.0
