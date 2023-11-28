@@ -1,9 +1,23 @@
-{% extends "admin/base.html" %} {% load static %} {% block extrahead %}
+{% extends "admin/base.html" %}
+{% load static %}
+{% block extrahead %}
 
 <link
   rel="stylesheet"
   type="text/css"
   href="{% static 'custom_admin.css' %}"
 />
+{% include 'admin_site_search/head.html' %}
+{{ block.super }}
 
+{% endblock %}
+
+{% block footer %}
+    {{ block.super }}
+    {% include 'admin_site_search/modal.html' %}
+{% endblock %}
+
+{% block usertools %}
+    {% include 'admin_site_search/button.html' %}
+    {{ block.super }}
 {% endblock %}

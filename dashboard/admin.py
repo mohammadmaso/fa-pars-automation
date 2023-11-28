@@ -10,6 +10,13 @@ import django_jalali.admin as jadmin
 
 from .models import Customer
 
+from django.contrib import admin
+from admin_site_search.views import AdminSiteSearchView
+
+
+class MyAdminSite(AdminSiteSearchView, admin.AdminSite):
+    ...
+
 
 class CustomerAdmin(admin.ModelAdmin):
     list_display = ("first_name", "last_name", "number", "region_number")
