@@ -14,6 +14,7 @@ django-admin-tools-stats==0.9.0
 django-auditlog==2.3.0
 django-bower==5.2.0
 django-cache-utils==0.7.2
+django-environ==0.11.2
 django-jalali==6.0.1
 django-jsonfield==1.4.1
 django-memoize==2.3.1
