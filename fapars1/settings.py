@@ -152,3 +152,5 @@ BOWER_INSTALLED_APPS = (
     "d3#3.3.13",
     "nvd3#1.7.1",
 )
+
+CSRF_TRUSTED_ORIGINS = ["https://fapars.panel.0be1.ir"]

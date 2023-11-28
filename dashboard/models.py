@@ -36,8 +36,9 @@ class Customer(models.Model):
     region_number = models.IntegerField(default=-1, verbose_name="شماره منطقه")
     first_name = models.CharField(max_length=100, verbose_name="نام")
     last_name = models.CharField(max_length=100, verbose_name="نام خانوادگی")
-    details = models.TextField(null=True, verbose_name="جزئیات")
+    details = models.TextField(null=True, blank=True, verbose_name="جزئیات")
     attitude = models.TextField(blank=True, null=True, verbose_name="ویژگی‌های شخصیتی")
+    ref = models.CharField(default=-1, max_length=10, verbose_name="معرف")
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
@@ -58,7 +59,7 @@ class Product(models.Model):
     filter4 = models.SmallIntegerField(default=-1, verbose_name="فیلتر 4 - دوره تعویض")
     filter5 = models.SmallIntegerField(default=-1, verbose_name="فیلتر 5 - دوره تعویض")
     filter6 = models.SmallIntegerField(default=-1, verbose_name="فیلتر 6 - دوره تعویض")
-    details = models.TextField(null=True, verbose_name="جزئیات")
+    details = models.TextField(null=True, blank=True, verbose_name="جزئیات")
 
     def __str__(self):
         return f"{self.model_name}"
@@ -77,7 +78,7 @@ class SoldProduct(models.Model):
         "Customer", on_delete=models.CASCADE, verbose_name="مشتری"
     )
     calls = models.ManyToManyField("Call", verbose_name="تماس‌ها", blank=True)
-    details = models.TextField(null=True, verbose_name="جزئیات")
+    details = models.TextField(null=True, blank=True, verbose_name="جزئیات")
 
     def __str__(self):
         return f"فروش محصول به {self.customer} در تاریخ {self.date_of_sell}"
@@ -106,7 +107,7 @@ class Call(models.Model):
         verbose_name="پاسخ",
     )
     # recall_date = jmodels.jDateField(null=True,verbose_name='تاریخ تماس دوباره')
-    details = models.TextField(verbose_name="جزئیات")
+    details = models.TextField(verbose_name="جزئیات", null=True, blank=True)
     service = models.OneToOneField(
         "Service",
         on_delete=models.SET_NULL,
@@ -137,7 +138,7 @@ class Service(models.Model):
     product = models.ForeignKey(
         "Product", on_delete=models.SET_NULL, null=True, verbose_name="محصول مرتبط"
     )
-    details = models.TextField(null=True, verbose_name="جزئیات")
+    details = models.TextField(null=True, blank=True, verbose_name="جزئیات")
 
     def __str__(self):
         return f"سرویس برای {self.technician}"
@@ -150,7 +151,7 @@ class Service(models.Model):
 class Technician(models.Model):
     first_name = models.CharField(max_length=100, verbose_name="نام")
     last_name = models.CharField(max_length=100, verbose_name="نام خانوادگی")
-    details = models.TextField(null=True, verbose_name="جزئیات")
+    details = models.TextField(null=True, blank=True, verbose_name="جزئیات")
     region = models.IntegerField(default=-1, verbose_name="منطقه‌ی محل زندگی")
 
     def __str__(self):
@@ -170,7 +171,7 @@ class NotSoldProduct(models.Model):
         "Customer", on_delete=models.CASCADE, verbose_name="مشتری"
     )
     calls = models.ManyToManyField("Call", verbose_name="تماس‌ها", blank=True)
-    details = models.TextField(null=True, verbose_name="جزئیات")
+    details = models.TextField(null=True, blank=True, verbose_name="جزئیات")
 
     def __str__(self):
         return f"فروش محصول به {self.customer} در تاریخ {self.date_of_call}"

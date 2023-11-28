@@ -32,7 +32,15 @@ class ProductAdmin(admin.ModelAdmin):
         "filter5",
         "filter6",
     )
-    list_filter = ("filter1", "filter2", "filter3", "filter4", "filter5", "filter6")
+    list_filter = (
+        "filter1",
+        "filter2",
+        "filter3",
+        "filter4",
+        "filter5",
+        "filter6",
+        "ref",
+    )
     search_fields = ("model_number",)
 
 
