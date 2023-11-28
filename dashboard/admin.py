@@ -14,7 +14,7 @@ from .models import Customer
 class CustomerAdmin(admin.ModelAdmin):
     list_display = ("first_name", "last_name", "number", "region_number")
     list_filter = ("region_number",)
-    search_fields = ("first_name", "last_name", "number", "id_number")
+    search_fields = ("first_name", "last_name", "number", "id_number", "ref")
 
 
 admin.site.register(Customer, CustomerAdmin)
@@ -39,7 +39,6 @@ class ProductAdmin(admin.ModelAdmin):
         "filter4",
         "filter5",
         "filter6",
-        "ref",
     )
     search_fields = ("model_number",)
 
