@@ -1,8 +1,6 @@
-from django.contrib.admin.apps import AdminConfig
+from django.apps import AppConfig
 
 
-class MyAdminConfig(AdminConfig):
-    default_site = "dashboard.admin.MyAdminSite"
-    default_auto_field = "django.db.models.BigAutoField"
+class DashboardConfig(AppConfig):
     name = "dashboard"
     verbose_name = "داشبورد"
