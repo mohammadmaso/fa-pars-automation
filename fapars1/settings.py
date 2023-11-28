@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     # "admin_tools_stats",
     # "django_nvd3",
     "djangobower",
-    "dashboard.apps.MyAdminConfig",
+    "dashboard.admin_apps.MyAdminConfig",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
