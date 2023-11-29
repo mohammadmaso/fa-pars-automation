@@ -43,9 +43,9 @@ def update_call(request):
         for index, filter_duration in enumerate(filters, 1):
             # Assuming `filter_duration` is the number of months after which the filter should be replaced
 
-            detail += f"فیلتر {index} تعویض شود| "
             if months_since_sell != 0:
                 if filter_duration // months_since_sell == 0:
+                    detail += f"فیلتر {index} تعویض شود| "
                     call = Call(
                         customer=sold_product.customer,
                         date=now,
