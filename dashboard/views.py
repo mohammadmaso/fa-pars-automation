@@ -10,7 +10,7 @@ from .models import Call, SoldProduct
 
 def month_difference(jdate1, jdate2):
     return (
-        ((jdate1.year - jdate2.year) * 360
+        (jdate1.year - jdate2.year) * 360
         + (jdate1.month - jdate2.month) * 30
         + (jdate1.day + 7 - jdate2.day)
     ) / 30
@@ -36,6 +36,7 @@ def update_call(request):
 
         current_date = jdatetime.date.today()
         months_since_sell = month_difference(current_date, sold_product.date_of_sell)
+        print(months_since_sell, "kiiiiiiiiiiiiir")
         detail = " "
         for index, filter_duration in enumerate(filters, 1):
             # Assuming `filter_duration` is the number of months after which the filter should be replaced
