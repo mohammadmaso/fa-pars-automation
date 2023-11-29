@@ -53,12 +53,24 @@ class Product(models.Model):
     model_name = models.CharField(
         blank=True, null=True, max_length=50, verbose_name="نام"
     )
-    filter1 = models.SmallIntegerField(default=-1, verbose_name="فیلتر 1 - دوره تعویض")
-    filter2 = models.SmallIntegerField(default=-1, verbose_name="فیلتر 2 - دوره تعویض")
-    filter3 = models.SmallIntegerField(default=-1, verbose_name="فیلتر 3 - دوره تعویض")
-    filter4 = models.SmallIntegerField(default=-1, verbose_name="فیلتر 4 - دوره تعویض")
-    filter5 = models.SmallIntegerField(default=-1, verbose_name="فیلتر 5 - دوره تعویض")
-    filter6 = models.SmallIntegerField(default=-1, verbose_name="فیلتر 6 - دوره تعویض")
+    filter1 = models.PositiveIntegerField(
+        default=1, verbose_name="فیلتر 1 - دوره تعویض"
+    )
+    filter2 = models.PositiveIntegerField(
+        default=1, verbose_name="فیلتر 2 - دوره تعویض"
+    )
+    filter3 = models.PositiveIntegerField(
+        default=1, verbose_name="فیلتر 3 - دوره تعویض"
+    )
+    filter4 = models.PositiveIntegerField(
+        default=1, verbose_name="فیلتر 4 - دوره تعویض"
+    )
+    filter5 = models.PositiveIntegerField(
+        default=1, verbose_name="فیلتر 5 - دوره تعویض"
+    )
+    filter6 = models.PositiveIntegerField(
+        default=1, verbose_name="فیلتر 6 - دوره تعویض"
+    )
     details = models.TextField(null=True, blank=True, verbose_name="جزئیات")
 
     def __str__(self):
