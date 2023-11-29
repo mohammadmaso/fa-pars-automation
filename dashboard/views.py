@@ -6,6 +6,7 @@ import jdatetime
 from django.utils import timezone
 
 from .models import Call, SoldProduct
+from django.contrib.auth.models import User
 
 
 def month_difference(jdate1, jdate2):
@@ -23,6 +24,11 @@ now = jdatetime.datetime.fromgregorian(datetime=timezone.now())
 @require_POST
 def update_call(request):
     # Logic to update Call based on SoldProduct and Product
+
+    # تعداد اپراتورها = تعداد یوزر ها - ۲
+    operator_count = User.objects.count() - 2
+
+    counter = 1
     for sold_product in SoldProduct.objects.all():
         product = sold_product.product
         filters = [
@@ -51,6 +57,7 @@ def update_call(request):
                         date=now,
                         details=detail,
                         product=sold_product.product,
+                        operator=counter % operator_count,
                     )
                     calls = Call.objects.filter(customer=sold_product.customer)
                     if calls:
@@ -59,6 +66,7 @@ def update_call(request):
                         )
                     else:
                         call.save()
+                    counter += 1
 
     messages.success(request, "‌تماس‌ها با موفقیت بروزرسانی شدند")
     return redirect("admin:dashboard_call_changelist")

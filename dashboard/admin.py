@@ -55,6 +55,7 @@ from .models import Call, Customer
 class CallAdmin(admin.ModelAdmin):
     list_display = (
         "customer",
+        "operator",
         "product",
         "get_address",
         "get_backup_number",
@@ -66,8 +67,6 @@ class CallAdmin(admin.ModelAdmin):
         "service",
         "details",
     )
-
-    Product.short_description = "محصول"
 
     def get_address(self, obj):
         return obj.customer.address
@@ -89,7 +88,13 @@ class CallAdmin(admin.ModelAdmin):
 
     get_id.short_description = "اشتراک"
 
-    list_filter = ("is_called", "respond", "date", "service")
+    list_filter = (
+        "is_called",
+        "respond",
+        "date",
+        "service",
+        "operator",
+    )
     list_editable = ("is_called", "respond", "service")
     # search_fields = [field.name for field in Call._meta.fields]
     change_list_template = "admin/change_list.html"
@@ -146,7 +151,7 @@ class ServiceAdmin(admin.ModelAdmin):
     list_filter = ("is_done",)
     list_editable = ("is_done",)
 
-    search_fields = ("customer",)
+    search_fields = ("is_done",)
 
     def get_search_results(self, request, queryset, search_term):
         queryset, use_distinct = super(ServiceAdmin, self).get_search_results(
