@@ -54,6 +54,7 @@ from .models import Call, Customer
 class CallAdmin(admin.ModelAdmin):
     list_display = (
         "customer",
+        "product",
         "get_address",
         "get_backup_number",
         "get_number",

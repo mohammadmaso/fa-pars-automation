@@ -46,7 +46,9 @@ def update_call(request):
                     call = Call(
                         customer=sold_product.customer, date=now, details=detail
                     )
-                calls = Call.objects.filter(customer=sold_product.customer)
+                calls = Call.objects.filter(
+                    customer=sold_product.customer, product=sold_product.product
+                )
                 if calls:
                     calls.update(
                         customer=sold_product.customer, date=now, details=detail

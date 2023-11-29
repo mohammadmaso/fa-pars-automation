@@ -96,6 +96,9 @@ class Call(models.Model):
     is_called = models.BooleanField(
         default=False, verbose_name="تماس اول صورت گرفته است؟"
     )
+    product = models.ForeignKey(
+        "Product", on_delete=models.SET_NULL, null=True, blank=True
+    )
     respond = models.CharField(
         max_length=50,
         choices=[
