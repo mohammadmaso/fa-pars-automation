@@ -100,7 +100,7 @@ class CallAdmin(admin.ModelAdmin):
     change_list_template = "admin/change_list.html"
     autocomplete_fields = ["customer"]
 
-    search_fields = ("customer",)
+    search_fields = ("is_called",)
 
     def get_search_results(self, request, queryset, search_term):
         queryset, use_distinct = super(CallAdmin, self).get_search_results(
