@@ -35,7 +35,9 @@ def update_call(request):
         ]
 
         current_date = jdatetime.date.today()
-        months_since_sell = month_difference(current_date, sold_product.date_of_sell)
+        months_since_sell = int(
+            month_difference(current_date, sold_product.date_of_sell)
+        )
         print(months_since_sell, "kiiiiiiiiiiiiir")
         detail = " "
         for index, filter_duration in enumerate(filters, 1):
