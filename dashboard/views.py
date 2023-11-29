@@ -37,7 +37,7 @@ def update_call(request):
             # Assuming `filter_duration` is the number of months after which the filter should be replaced
 
             detail += f"فیلتر {index} تعویض شود| "
-            if month_since_sell != 0:
+            if months_since_sell != 0:
                 if filter_duration // months_since_sell == 0:
                     call = Call(
                         customer=sold_product.customer, date=now, details=detail
