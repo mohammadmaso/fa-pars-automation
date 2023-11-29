@@ -122,8 +122,8 @@ class CallAdmin(admin.ModelAdmin):
 
         lastname_search = Q(customer__last_name__icontains=search_term)
 
-        tfirstname_search = Q(technician__first_name__icontains=search_term)
-        tlastname_search = Q(technician__last_name__icontains=search_term)
+        # tfirstname_search = Q(technician__first_name__icontains=search_term)
+        # tlastname_search = Q(technician__last_name__icontains=search_term)
 
         # Add more conditions for other Book fields if needed
 
@@ -132,8 +132,6 @@ class CallAdmin(admin.ModelAdmin):
             product_search
             | firstname_search
             | lastname_search
-            | tfirstname_search
-            | tlastname_search
             | address_search
             | id_search
         )
