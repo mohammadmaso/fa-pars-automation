@@ -36,7 +36,7 @@ class ProductAdmin(admin.ModelAdmin):
         "filter5",
         "filter6",
     )
-    list_filter = (
+    filter_horizontal = (
         "filter1",
         "filter2",
         "filter3",
