@@ -66,6 +66,8 @@ class CallAdmin(admin.ModelAdmin):
         "details",
     )
 
+    product.short_description = "محصول"
+
     def get_address(self, obj):
         return obj.customer.address
 
