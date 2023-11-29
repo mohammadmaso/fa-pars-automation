@@ -98,7 +98,7 @@ class CallAdmin(admin.ModelAdmin):
     search_fields = ("customer",)
 
     def get_search_results(self, request, queryset, search_term):
-        queryset, use_distinct = super(SoldProductAdmin, self).get_search_results(
+        queryset, use_distinct = super(CallAdmin, self).get_search_results(
             request, queryset, search_term
         )
 
@@ -149,7 +149,7 @@ class ServiceAdmin(admin.ModelAdmin):
     search_fields = ("customer",)
 
     def get_search_results(self, request, queryset, search_term):
-        queryset, use_distinct = super(SoldProductAdmin, self).get_search_results(
+        queryset, use_distinct = super(ServiceAdmin, self).get_search_results(
             request, queryset, search_term
         )
 
