@@ -62,7 +62,10 @@ def update_call(request):
                     calls = Call.objects.filter(customer=sold_product.customer)
                     if calls:
                         calls.update(
-                            customer=sold_product.customer, date=now, details=detail
+                            customer=sold_product.customer,
+                            date=now,
+                            details=detail,
+                            operator=counter % operator_count,
                         )
                     else:
                         call.save()
