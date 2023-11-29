@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.contrib.admin.filters import DateFieldListFilter
+from django.db.models import Q
 
 
 from django_jalali.admin.filters import JDateFieldListFilter
@@ -137,12 +138,32 @@ class SoldProductAdmin(admin.ModelAdmin):
         "product",
         "customer",
     )
-    search_fields = (
-        "date_of_sell",
-        "product__model_number",
-        "customer__first_name",
-        "customer__last_name",
-    )
+
+    def get_search_results(self, request, queryset, search_term):
+        queryset, use_distinct = super(SoldProductAdmin, self).get_search_results(
+            request, queryset, search_term
+        )
+
+        # If there's no search term, return the original queryset
+        if not search_term:
+            return queryset, use_distinct
+
+        # Define search in related Author fields
+        product_search = Q(product__model_name__icontains=search_term)
+        # Add more conditions for other related fields if needed
+
+        # Define search in Book fields
+        firstname_search = Q(customer__first_name__icontains=search_term)
+        lastname_search = Q(customer__last_name__icontains=search_term)
+
+        # Add more conditions for other Book fields if needed
+
+        # Combine queries
+        queryset |= self.model.objects.filter(
+            product_search | firstname_search | lastname_search
+        )
+
+        return queryset, use_distinct
 
 
 admin.site.register(SoldProduct, SoldProductAdmin)
