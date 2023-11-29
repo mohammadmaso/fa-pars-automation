@@ -88,6 +88,14 @@ class CallAdmin(admin.ModelAdmin):
 
     get_id.short_description = "اشتراک"
 
+    list_filter = (
+        "is_called",
+        "respond",
+        "date",
+        "service",
+        "operator",
+    )
+
     filter_horizontal = (
         "is_called",
         "respond",
