@@ -65,7 +65,7 @@ def update_call(request):
                             customer=sold_product.customer,
                             date=now,
                             details=detail,
-                            operator=counter % operator_count,
+                            operator=(counter % operator_count) + 1,
                         )
                     else:
                         call.save()
