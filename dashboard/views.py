@@ -9,7 +9,11 @@ from .models import Call, SoldProduct
 
 
 def month_difference(jdate1, jdate2):
-    return (jdate1.year - jdate2.year) * 12 + jdate1.month - jdate2.month
+    return (
+        ((jdate1.year - jdate2.year) * 12) * 360
+        + (jdate1.month - jdate2.month) * 30
+        + (jdate1.day + 7 - jdate2.day)
+    ) / 30
 
 
 now = jdatetime.datetime.fromgregorian(datetime=timezone.now())

@@ -27,6 +27,7 @@ from .models import Product
 class ProductAdmin(admin.ModelAdmin):
     list_display = (
         "model_number",
+        "model_name",
         "filter1",
         "filter2",
         "filter3",
