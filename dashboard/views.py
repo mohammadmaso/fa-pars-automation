@@ -42,11 +42,13 @@ def update_call(request):
                     call = Call(
                         customer=sold_product.customer, date=now, details=detail
                     )
-        calls = Call.objects.filter(customer=sold_product.customer)
-        if calls:
-            calls.update(customer=sold_product.customer, date=now, details=detail)
-        else:
-            call.save()
+                calls = Call.objects.filter(customer=sold_product.customer)
+                if calls:
+                    calls.update(
+                        customer=sold_product.customer, date=now, details=detail
+                    )
+                else:
+                    call.save()
 
     messages.success(request, "‌تماس‌ها با موفقیت بروزرسانی شدند")
     return redirect("admin:dashboard_call_changelist")
