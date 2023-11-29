@@ -138,6 +138,7 @@ class SoldProductAdmin(admin.ModelAdmin):
         "product",
         "customer",
     )
+    search_fields = "name"
 
     def get_search_results(self, request, queryset, search_term):
         queryset, use_distinct = super(SoldProductAdmin, self).get_search_results(
