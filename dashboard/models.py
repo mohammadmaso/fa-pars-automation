@@ -97,7 +97,11 @@ class Call(models.Model):
         default=False, verbose_name="تماس اول صورت گرفته است؟"
     )
     product = models.ForeignKey(
-        "Product", on_delete=models.SET_NULL, null=True, blank=True
+        "Product",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        verbose_name="محصول",
     )
     respond = models.CharField(
         max_length=50,
@@ -111,6 +115,9 @@ class Call(models.Model):
     )
     # recall_date = jmodels.jDateField(null=True,verbose_name='تاریخ تماس دوباره')
     details = models.TextField(verbose_name="جزئیات", null=True, blank=True)
+    operator = models.PositiveIntegerField(
+        blank=True, null=True, verbose_name="اپراتور مسئول"
+    )
     service = models.OneToOneField(
         "Service",
         on_delete=models.SET_NULL,
