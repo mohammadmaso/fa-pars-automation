@@ -96,13 +96,6 @@ class CallAdmin(admin.ModelAdmin):
         "operator",
     )
 
-    filter_horizontal = (
-        "is_called",
-        "respond",
-        "date",
-        "service",
-        "operator",
-    )
     list_editable = ("is_called", "respond", "service")
     # search_fields = [field.name for field in Call._meta.fields]
     change_list_template = "admin/change_list.html"
