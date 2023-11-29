@@ -89,11 +89,51 @@ class CallAdmin(admin.ModelAdmin):
 
     get_id.short_description = "اشتراک"
 
-    list_filter = ("is_called", "respond", "date", "service")
+    list_filter = ("is_called", "respond", "date", "service", "reff")
     list_editable = ("is_called", "respond", "service")
     # search_fields = [field.name for field in Call._meta.fields]
     change_list_template = "admin/change_list.html"
     autocomplete_fields = ["customer"]
+
+    search_fields = ("customer",)
+
+    def get_search_results(self, request, queryset, search_term):
+        queryset, use_distinct = super(SoldProductAdmin, self).get_search_results(
+            request, queryset, search_term
+        )
+
+        # If there's no search term, return the original queryset
+        if not search_term:
+            return queryset, use_distinct
+
+        # Define search in related Author fields
+        product_search = Q(product__model_name__icontains=search_term)
+        # Add more conditions for other related fields if needed
+
+        # Define search in Book fields
+        firstname_search = Q(customer__first_name__icontains=search_term)
+        address_search = Q(customer__address__icontains=search_term)
+        id_search = Q(customer__id_number__icontains=search_term)
+
+        lastname_search = Q(customer__last_name__icontains=search_term)
+
+        tfirstname_search = Q(technician__first_name__icontains=search_term)
+        tlastname_search = Q(technician__last_name__icontains=search_term)
+
+        # Add more conditions for other Book fields if needed
+
+        # Combine queries
+        queryset |= self.model.objects.filter(
+            product_search
+            | firstname_search
+            | lastname_search
+            | tfirstname_search
+            | tlastname_search
+            | address_search
+            | id_search
+        )
+
+        return queryset, use_distinct
 
 
 admin.site.register(Call, CallAdmin)
@@ -106,12 +146,40 @@ class ServiceAdmin(admin.ModelAdmin):
     list_filter = ("is_done",)
     list_editable = ("is_done",)
 
-    search_fields = (
-        "customer",
-        "due_date_time",
-        "technician__first_name",
-        "technician__last_name",
-    )
+    search_fields = ("customer",)
+
+    def get_search_results(self, request, queryset, search_term):
+        queryset, use_distinct = super(SoldProductAdmin, self).get_search_results(
+            request, queryset, search_term
+        )
+
+        # If there's no search term, return the original queryset
+        if not search_term:
+            return queryset, use_distinct
+
+        # Define search in related Author fields
+        product_search = Q(product__model_name__icontains=search_term)
+        # Add more conditions for other related fields if needed
+
+        # Define search in Book fields
+        firstname_search = Q(customer__first_name__icontains=search_term)
+        lastname_search = Q(customer__last_name__icontains=search_term)
+
+        tfirstname_search = Q(technician__first_name__icontains=search_term)
+        tlastname_search = Q(technician__last_name__icontains=search_term)
+
+        # Add more conditions for other Book fields if needed
+
+        # Combine queries
+        queryset |= self.model.objects.filter(
+            product_search
+            | firstname_search
+            | lastname_search
+            | tfirstname_search
+            | tlastname_search
+        )
+
+        return queryset, use_distinct
 
 
 admin.site.register(Service, ServiceAdmin)
