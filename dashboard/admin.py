@@ -88,6 +88,7 @@ class CallAdmin(admin.ModelAdmin):
     list_editable = ("is_called", "respond", "service")
     # search_fields = [field.name for field in Call._meta.fields]
     change_list_template = "admin/change_list.html"
+    autocomplete_fields = ["customer"]
 
 
 admin.site.register(Call, CallAdmin)
