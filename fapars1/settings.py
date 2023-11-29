@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django_simple_tags",
+    "django_middleware_global_request",
+    "django_horizontal_list_filter",
     "admin_site_search",
     "auditlog",
     "django_jalali",
@@ -52,10 +55,14 @@ MIDDLEWARE = [
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
+    "django_middleware_global_request.middleware.GlobalRequestMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+DJANGO_HORIZONTAL_LIST_FILTER_USE_SELECT2 = True
+
 
 ROOT_URLCONF = "fapars1.urls"
 
