@@ -30,7 +30,7 @@ class Customer(models.Model):
     number = models.CharField(default=-1, max_length=20, verbose_name="شماره موبایل")
     home_number = models.CharField(default=-1, max_length=20, verbose_name="شماره تلفن")
     backup_number = models.CharField(
-        null=True, max_length=20, verbose_name="شماره تلفن پشتیبان"
+        null=True, blank=True, max_length=20, verbose_name="شماره تلفن پشتیبان"
     )
     address = models.TextField(verbose_name="آدرس")
     region_number = models.IntegerField(default=-1, verbose_name=" منطقه")
