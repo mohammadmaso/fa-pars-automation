@@ -16,8 +16,8 @@ from django.contrib import admin
 
 class CustomerAdmin(admin.ModelAdmin):
     list_display = ("first_name", "last_name", "number", "region_number")
-    list_filter = ("region_number",)
-    search_fields = ("first_name", "last_name", "number", "id_number", "ref")
+    list_filter = ("region_number", "reff")
+    search_fields = ("first_name", "last_name", "number", "id_number", "reff")
 
 
 admin.site.register(Customer, CustomerAdmin)
@@ -89,7 +89,7 @@ class CallAdmin(admin.ModelAdmin):
 
     get_id.short_description = "اشتراک"
 
-    list_filter = ("is_called", "respond", "date", "service", "reff")
+    list_filter = ("is_called", "respond", "date", "service")
     list_editable = ("is_called", "respond", "service")
     # search_fields = [field.name for field in Call._meta.fields]
     change_list_template = "admin/change_list.html"
