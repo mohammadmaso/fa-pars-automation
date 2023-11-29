@@ -44,11 +44,12 @@ def update_call(request):
             if months_since_sell != 0:
                 if filter_duration // months_since_sell == 0:
                     call = Call(
-                        customer=sold_product.customer, date=now, details=detail
+                        customer=sold_product.customer,
+                        date=now,
+                        details=detail,
+                        product=sold_product.product,
                     )
-                calls = Call.objects.filter(
-                    customer=sold_product.customer, product=sold_product.product
-                )
+                calls = Call.objects.filter(customer=sold_product.customer)
                 if calls:
                     calls.update(
                         customer=sold_product.customer, date=now, details=detail
