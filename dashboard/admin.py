@@ -102,10 +102,9 @@ from .models import Service
 
 class ServiceAdmin(admin.ModelAdmin):
     list_display = ("customer", "due_date_time", "technician", "is_done", "product")
-    list_filter = (
-        "customer",
-        "is_done",
-    )
+    list_filter = ("is_done",)
+    list_editable = ("is_done",)
+
     search_fields = (
         "customer",
         "due_date_time",
